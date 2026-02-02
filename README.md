@@ -1,98 +1,189 @@
-UIDAI Data Hackathon 2026
-Aadhaar Enrolment & Update Analytics
-📌 Project Overview
+📖 Project Overview
 
-This project analyzes nationwide Aadhaar enrolment, biometric update, and demographic update datasets to uncover structural trends, regional deviations, and anomalies in Aadhaar transactions. The study focuses on understanding whether Aadhaar operations are enrolment-driven or maintenance-driven and identifies deviations from expected enrolment patterns across states, districts, and age groups.
+This project was developed as part of UIDAI Data Hackathon 2026 to analyze Aadhaar enrollment, biometric update, and demographic update transaction patterns across India. The objective is to understand whether the Aadhaar ecosystem is enrollment-driven or maintenance-driven, identify regional deviations, and provide data-backed recommendations to improve operational efficiency, accessibility, and infrastructure planning.
 
-- Problem Statement
+National-level analysis indicates that Aadhaar has reached a mature coverage stage, with biometric updates accounting for over 70% of transactions and new enrollments contributing less than 3%. However, deeper district- and state-level analysis reveals localized anomalies that require targeted interventions.
 
-Aadhaar transaction data indicates a maintenance-driven ecosystem dominated by biometric updates, with relatively low new enrolments at the national level. However, state-, district-, and age-group-level analysis reveals deviations from expected enrolment behavior and sudden spikes in update activity.
-This project aims to identify meaningful patterns, anomalies, and operational insights that can support data-driven decision-making and system improvements for UIDAI.
+🎯 Objectives
 
-📂 Datasets Used
+Identify operational patterns in enrollments and updates
 
-The analysis uses anonymized and aggregated datasets provided by UIDAI:
+Highlight regional deviations from national trends
 
-Aadhaar Enrolment Data
+Analyze age-group-wise transaction behavior
 
-Demographic Update Data
+Assess infrastructure alignment with usage patterns
 
-Biometric Update Data
+Provide actionable recommendations for optimization
 
-Key dimensions include:
+📊 Datasets Used
 
-State, District, City
+Three Aadhaar-related datasets compiled from multiple CSV files:
 
-Age Groups
+Dataset	Description
+Enrollment Dataset	Aadhaar enrollment counts by age group (0–5, 5–17, 18+)
+Biometric Updates Dataset	Biometric update counts by age group (5–17, 18+)
+Demographic Updates Dataset	Demographic update counts by age group (5–17, 18+)
 
-Transaction Date
+Common Fields
 
-Enrolment, Biometric Update, and Demographic Update counts
+State
 
-🛠 Methodology
+District
 
-Data Cleaning & Preprocessing
+Date (Month)
 
-Standardized state and district names
+Pincode
 
-Handled missing and inconsistent demographic update records
+Data Source:
+Government open data portals (e.g., data.gov.in).
+Due to size constraints, raw datasets are not included. Cleaned datasets are available in data/processed/.
 
-Aggregated data at monthly, state, district, and age-group levels
+🛠 Tools & Technologies
 
-Exploratory Data Analysis (EDA)
+Python (Pandas, NumPy)
 
-Univariate analysis of transaction volumes
-
-Bivariate analysis across regions and age groups
-
-Trivariate analysis combining time, region, and activity type
-
-Metric Design
-
-Share of enrolment, biometric, and demographic updates
-
-Update-to-enrolment ratios
-
-Detection of abnormal spikes and deviations
-
-📊 Key Insights
-
-Biometric updates contribute approximately 70% of total Aadhaar activity, while new enrolments remain below 3% nationally, indicating a maintenance-heavy system.
-
-Certain states show disproportionately high enrolment shares relative to their total Aadhaar activity.
-
-Enrolment activity is skewed toward 5–17 and 18+ age groups, deviating from the expected dominance of early-age (0–5) enrolments.
-
-Sudden daily or monthly spikes in update activity at district levels suggest potential operational surges, reporting delays, or process inefficiencies.
-
-Missing or intermittent demographic update data may influence observed activity distributions.
-
-📈 Visualizations
-
-Activity composition dashboards (Enrolment vs Updates)
-
-State- and district-level comparison charts
-
-Age-group enrolment distribution plots
-
-Time-series trend and spike detection visuals
-
-Visualizations were created using Power BI and Python.
-
-🚀 Impact & Applicability
-
-Enables UIDAI to identify regions contributing 20–30% higher-than-expected activity, allowing targeted administrative intervention.
-
-Supports improved early-age enrolment monitoring and planning.
-
-Assists in detecting operational inefficiencies, data reporting delays, and abnormal update behavior.
-
-Provides a scalable analytical framework for continuous Aadhaar system monitoring.
-
-🧑‍💻 Tools & Technologies
-
-Python (Pandas, NumPy, Matplotlib)
+Jupyter Notebook / Google Colab
 
 Power BI
 
-Jupyter Notebook
+Power Query
+
+DAX
+
+Microsoft Excel
+
+🔁 Methodology
+1. Data Preparation (Python – Jupyter Notebook / Google Colab)
+
+Imported multiple CSV files for each dataset
+
+Merged files into unified enrollment, biometric, and demographic datasets
+
+Standardized state names and resolved spelling inconsistencies
+
+Handled missing values and corrected data types
+
+Performed preliminary aggregations and validation checks
+
+2. Power Query Transformations (Power BI)
+
+Trimmed whitespace from district names
+
+Cleaned text and corrected spelling variations
+
+Converted district names to uppercase
+
+Replaced inconsistent district labels with standardized values
+
+Converted columns to appropriate data types
+
+~50% of district records required transformation to ensure reliable analysis.
+
+3. Data Modeling
+
+Star schema design:
+
+Fact Tables
+
+Fact_Enrollment
+
+Fact_Biometric
+
+Fact_Demographic
+
+Dimension Tables
+
+Dim_Date
+
+Dim_State
+
+Dim_District
+
+Relationships were created using state, district, and date keys.
+
+4. DAX Measures
+
+Biometric Share (%)
+
+Age Group Ratios
+
+Deviation from National Average
+
+Monthly Trend Measures
+
+These measures power interactive visuals and dynamic filtering.
+
+📈 Key Insights
+Enrollment
+
+Pan-India enrollments are low relative to updates, confirming maturity stage
+
+Meghalaya shows higher adult (18+) enrollments
+
+East Khasi Hills district dominates enrollment activity
+
+District-level patterns are more meaningful than state-level averages
+
+Biometric Updates
+
+Dominated by high-population states (Uttar Pradesh, Maharashtra, Madhya Pradesh)
+
+Balanced across age groups nationally
+
+Certain states show above-average update frequency
+
+Noticeable dip in October (likely festive season impact)
+
+Demographic Updates
+
+Concentrated in high-population states
+
+Reflect population-scale effects rather than anomalies
+
+Similar monthly dip patterns as biometric updates
+
+Online and physical update channels both contribute
+
+✅ Recommendations
+Pan-India
+
+Shift focus from enrollment expansion to maintenance optimization
+
+Seasonal capacity planning around festive months
+
+Use deviation metrics as early warning indicators
+
+Enrollment
+
+District-level monitoring
+
+Strengthen early-age (0–5) enrollment awareness
+
+Deploy mobile enrollment units
+
+Biometric Updates
+
+Expand infrastructure in high-update states
+
+Bundle multiple updates in one visit
+
+Standardize biometric refresh cycles
+
+Demographic Updates
+
+Prioritize capacity in large states
+
+Improve validation at enrollment stage
+
+Promote online update channels
+
+🎯 Expected Impact
+
+Optimized resource allocation
+
+Reduced operational strain
+
+Improved citizen experience
+
+Transition toward data-driven Aadhaar governance
