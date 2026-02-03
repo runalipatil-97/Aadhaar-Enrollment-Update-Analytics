@@ -159,10 +159,10 @@ These measures power interactive visuals and dynamic filtering.
 
 ## 📂 Repository Structure
 
-  data/                         # Cleaned and processed datasets
-notebooks/                    # Jupyter notebooks for data cleaning and analysis
-powerbi/                      # Power BI dashboard (.pbix)
-reports/                      # Final project report (PDF)
-insights_and_recommendations/ # Summary documents of findings and recommendations
-README.md                     # Project overview
+- data/                         # Cleaned and processed datasets
+- notebooks/                    # Jupyter notebooks for data cleaning and analysis
+- powerbi/                      # Power BI dashboard (.pbix)
+- reports/                      # Final project report (PDF)
+- insights_and_recommendations/ # Summary documents of findings and recommendations
+- README.md                     # Project overview
 
