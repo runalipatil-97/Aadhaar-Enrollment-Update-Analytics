@@ -1,189 +1,158 @@
-📖 Project Overview
+## 📖 Project Overview
 
 This project was developed as part of UIDAI Data Hackathon 2026 to analyze Aadhaar enrollment, biometric update, and demographic update transaction patterns across India. The objective is to understand whether the Aadhaar ecosystem is enrollment-driven or maintenance-driven, identify regional deviations, and provide data-backed recommendations to improve operational efficiency, accessibility, and infrastructure planning.
 
 National-level analysis indicates that Aadhaar has reached a mature coverage stage, with biometric updates accounting for over 70% of transactions and new enrollments contributing less than 3%. However, deeper district- and state-level analysis reveals localized anomalies that require targeted interventions.
 
-🎯 Objectives
+---
 
-Identify operational patterns in enrollments and updates
+## 🎯 Objectives
 
-Highlight regional deviations from national trends
+- Identify operational patterns in enrollments and updates  
+- Highlight regional deviations from national trends  
+- Analyze age-group-wise transaction behavior  
+- Assess infrastructure alignment with usage patterns  
+- Provide actionable recommendations for optimization  
 
-Analyze age-group-wise transaction behavior
+---
 
-Assess infrastructure alignment with usage patterns
-
-Provide actionable recommendations for optimization
-
-📊 Datasets Used
+## 📊 Datasets Used
 
 Three Aadhaar-related datasets compiled from multiple CSV files:
 
-Dataset	Description
-Enrollment Dataset	Aadhaar enrollment counts by age group (0–5, 5–17, 18+)
-Biometric Updates Dataset	Biometric update counts by age group (5–17, 18+)
-Demographic Updates Dataset	Demographic update counts by age group (5–17, 18+)
+| Dataset | Description |
+|------|------------|
+| Enrollment Dataset | Aadhaar enrollment counts by age group (0–5, 5–17, 18+) |
+| Biometric Updates Dataset | Biometric update counts by age group (5–17, 18+) |
+| Demographic Updates Dataset | Demographic update counts by age group (5–17, 18+) |
 
-Common Fields
+### Common Fields
 
-State
+- State  
+- District  
+- Date (Month)  
+- Pincode  
 
-District
+**Data Source:**  
+Government open data portals (e.g., data.gov.in)  
+Due to size constraints, raw datasets are not included. Cleaned datasets are available in `data/processed/`.
 
-Date (Month)
+---
 
-Pincode
+## 🛠 Tools & Technologies
 
-Data Source:
-Government open data portals (e.g., data.gov.in).
-Due to size constraints, raw datasets are not included. Cleaned datasets are available in data/processed/.
+- Python (Pandas, NumPy)  
+- Jupyter Notebook / Google Colab  
+- Power BI  
+- Power Query  
+- DAX  
+- Microsoft Excel  
 
-🛠 Tools & Technologies
+---
 
-Python (Pandas, NumPy)
+## 🔁 Methodology
 
-Jupyter Notebook / Google Colab
+### 1. Data Preparation (Python – Jupyter Notebook / Google Colab)
 
-Power BI
+- Imported multiple CSV files for each dataset  
+- Merged files into unified enrollment, biometric, and demographic datasets  
+- Standardized state names and resolved spelling inconsistencies  
+- Handled missing values and corrected data types  
+- Performed preliminary aggregations and validation checks  
 
-Power Query
+### 2. Power Query Transformations (Power BI)
 
-DAX
+- Trimmed whitespace from district names  
+- Cleaned text and corrected spelling variations  
+- Converted district names to uppercase  
+- Replaced inconsistent district labels with standardized values  
+- Converted columns to appropriate data types  
 
-Microsoft Excel
+Approximately 50% of district records required transformation to ensure reliable analysis.
 
-🔁 Methodology
-1. Data Preparation (Python – Jupyter Notebook / Google Colab)
+### 3. Data Modeling
 
-Imported multiple CSV files for each dataset
+**Fact Tables**
 
-Merged files into unified enrollment, biometric, and demographic datasets
+- Fact_Enrollment  
+- Fact_Biometric  
+- Fact_Demographic  
 
-Standardized state names and resolved spelling inconsistencies
+**Dimension Tables**
 
-Handled missing values and corrected data types
-
-Performed preliminary aggregations and validation checks
-
-2. Power Query Transformations (Power BI)
-
-Trimmed whitespace from district names
-
-Cleaned text and corrected spelling variations
-
-Converted district names to uppercase
-
-Replaced inconsistent district labels with standardized values
-
-Converted columns to appropriate data types
-
-~50% of district records required transformation to ensure reliable analysis.
-
-3. Data Modeling
-
-Star schema design:
-
-Fact Tables
-
-Fact_Enrollment
-
-Fact_Biometric
-
-Fact_Demographic
-
-Dimension Tables
-
-Dim_Date
-
-Dim_State
-
-Dim_District
+- Dim_Date  
+- Dim_State  
+- Dim_District  
 
 Relationships were created using state, district, and date keys.
 
-4. DAX Measures
+### 4. DAX Measures
 
-Biometric Share (%)
-
-Age Group Ratios
-
-Deviation from National Average
-
-Monthly Trend Measures
+- Biometric Share (%)  
+- Age Group Ratios  
+- Deviation from National Average  
+- Monthly Trend Measures  
 
 These measures power interactive visuals and dynamic filtering.
 
-📈 Key Insights
-Enrollment
+---
 
-Pan-India enrollments are low relative to updates, confirming maturity stage
+## 📈 Key Insights
 
-Meghalaya shows higher adult (18+) enrollments
+### Enrollment
 
-East Khasi Hills district dominates enrollment activity
+- Pan-India enrollments are low relative to updates, confirming maturity stage  
+- Meghalaya shows higher adult (18+) enrollments  
+- East Khasi Hills district dominates enrollment activity  
+- District-level patterns are more meaningful than state-level averages  
 
-District-level patterns are more meaningful than state-level averages
+### Biometric Updates
 
-Biometric Updates
+- Dominated by high-population states (Uttar Pradesh, Maharashtra, Madhya Pradesh)  
+- Balanced across age groups nationally  
+- Certain states show above-average update frequency  
+- Noticeable dip in October (likely festive season impact)  
 
-Dominated by high-population states (Uttar Pradesh, Maharashtra, Madhya Pradesh)
+### Demographic Updates
 
-Balanced across age groups nationally
+- Concentrated in high-population states  
+- Reflect population-scale effects rather than anomalies  
+- Similar monthly dip patterns as biometric updates  
+- Online and physical update channels both contribute  
 
-Certain states show above-average update frequency
+---
 
-Noticeable dip in October (likely festive season impact)
+## ✅ Recommendations
 
-Demographic Updates
+### Pan-India
 
-Concentrated in high-population states
+- Shift focus from enrollment expansion to maintenance optimization  
+- Seasonal capacity planning around festive months  
+- Use deviation metrics as early warning indicators  
 
-Reflect population-scale effects rather than anomalies
+### Enrollment
 
-Similar monthly dip patterns as biometric updates
+- District-level monitoring  
+- Strengthen early-age (0–5) enrollment awareness  
+- Deploy mobile enrollment units  
 
-Online and physical update channels both contribute
+### Biometric Updates
 
-✅ Recommendations
-Pan-India
+- Expand infrastructure in high-update states  
+- Bundle multiple updates in one visit  
+- Standardize biometric refresh cycles  
 
-Shift focus from enrollment expansion to maintenance optimization
+### Demographic Updates
 
-Seasonal capacity planning around festive months
+- Prioritize capacity in large states  
+- Improve validation at enrollment stage  
+- Promote online update channels  
 
-Use deviation metrics as early warning indicators
+---
 
-Enrollment
+## 🎯 Expected Impact
 
-District-level monitoring
-
-Strengthen early-age (0–5) enrollment awareness
-
-Deploy mobile enrollment units
-
-Biometric Updates
-
-Expand infrastructure in high-update states
-
-Bundle multiple updates in one visit
-
-Standardize biometric refresh cycles
-
-Demographic Updates
-
-Prioritize capacity in large states
-
-Improve validation at enrollment stage
-
-Promote online update channels
-
-🎯 Expected Impact
-
-Optimized resource allocation
-
-Reduced operational strain
-
-Improved citizen experience
-
-Transition toward data-driven Aadhaar governance
+- Optimized resource allocation  
+- Reduced operational strain  
+- Improved citizen experience  
+- Transition toward data-driven Aadhaar governance  
