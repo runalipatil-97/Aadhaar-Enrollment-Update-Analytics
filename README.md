@@ -162,7 +162,7 @@ These measures power interactive visuals and dynamic filtering.
 - data/                         # Cleaned and processed datasets
 - notebooks/                    # Jupyter notebooks for data cleaning and analysis
 - powerbi/                      # Power BI dashboard (.pbix)
+- insights_and_recommendations/ # Summary documents of findings and recommendations 
 - reports/                      # Final project report (PDF)
-- insights_and_recommendations/ # Summary documents of findings and recommendations
 - README.md                     # Project overview
 
